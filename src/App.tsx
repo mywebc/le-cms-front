@@ -1,6 +1,6 @@
 import React from 'react'
 import { Switch, BrowserRouter, Route } from 'react-router-dom'
-import { Login } from './pages/login'
+import { Login } from './pages/auth/login'
 import "./App.css"
 
 function App() {

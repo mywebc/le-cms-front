@@ -5,6 +5,8 @@ axios.defaults.timeout = 10000
 // axios.defaults.baseURL = BASE_URLS[process.env.REACT_APP_ENV!]
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8'
 
+// axios.defaults.baseURL = '/api'
+
 axios.interceptors.request.use(
   config => {
     // const user = userManager.getUser();
@@ -19,7 +21,8 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
   // @ts-ignore
   res => {
-    if (String(res?.data?.code) === '0') {
+    console.log('res', res)
+    if (res?.data?.code === 0) {
       return Promise.resolve(res.data)
     }
 
@@ -28,11 +31,12 @@ axios.interceptors.response.use(
     //   return (window.location.href = new URL('/login', CRM_DOMAIN).href);
     // }
 
-    const errorMessage = res.data.message
-    $message.error(errorMessage)
+    // const errorMessage = res.data.message
+    // $message.error(errorMessage)
     return Promise.reject(res)
   },
   error => {
+    console.log('error', error)
     let errorMessage = '系统异常'
     if (error.response?.status) {
       // 业务
