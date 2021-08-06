@@ -1,18 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Switch, BrowserRouter, Route, Redirect } from 'react-router-dom'
-import { Login } from './pages/auth/login'
-import "./App.css"
-import { Home } from './pages/home'
+import { BrowserRouter } from 'react-router-dom'
+import './App.css'
+import RenderRouter from './routes'
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Switch>
-        <Route exact path="/" render={() => <Redirect to="/login" />} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/home" component={Home} />
-      </Switch>
+      <RenderRouter />
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
