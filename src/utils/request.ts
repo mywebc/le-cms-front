@@ -61,8 +61,8 @@ axios.interceptors.response.use(
 
     error.message && $message.error(errorMessage)
     return {
-      success: false,
-      message: errorMessage,
+      status: false,
+      msg: errorMessage,
       data: null,
       code: '-1'
     }
@@ -70,9 +70,9 @@ axios.interceptors.response.use(
 )
 
 export type Response<T = any, U = any> = {
-  success: boolean
-  message: string
-  code: string | number
+  status: boolean
+  msg: string
+  code: number
   data: T
   errors: U
 }

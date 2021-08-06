@@ -12,7 +12,7 @@ export const Login: React.FC = memo(() => {
     const values = form.getFieldsValue()
     const data = await apiPostLogin(values)
     console.log('data', data)
-    if (data.data.status) {
+    if (data.status) {
       message.success('登录成功')
       navigate('/home')
     }
@@ -26,31 +26,34 @@ export const Login: React.FC = memo(() => {
 
   return (
     <div className="login_wrapper">
-      <Form name="basic" form={form}>
-        <Form.Item
-          label="Username"
-          name="username"
-          rules={[{ required: true, message: 'Please input your username!' }]}
-        >
-          <Input />
-        </Form.Item>
+      <div className="login_content">
+        <Form name="basic" form={form}>
+          <Form.Item
+            label="Username"
+            name="username"
+            rules={[{ required: true, message: 'Please input your username!' }]}
+          >
+            <Input />
+          </Form.Item>
 
-        <Form.Item
-          label="Password"
-          name="password"
-          rules={[{ required: true, message: 'Please input your password!' }]}
-        >
-          <Input />
-        </Form.Item>
+          <Form.Item
+            label="Password"
+            name="password"
+            rules={[{ required: true, message: 'Please input your password!' }]}
+          >
+            <Input />
+          </Form.Item>
 
-        <Button type="primary" onClick={handleLogin}>
-          login
-        </Button>
-        <Divider type="vertical" />
-        <Button type="primary" onClick={handleRegister}>
-          register
-        </Button>
-      </Form>
+          <div className="login_btn">
+            <Button type="primary" onClick={handleLogin}>
+              login
+            </Button>
+            <Button type="primary" onClick={handleRegister}>
+              register
+            </Button>
+          </div>
+        </Form>
+      </div>
     </div>
   )
 })
