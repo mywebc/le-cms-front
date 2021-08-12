@@ -1,0 +1,16 @@
+.home {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  .home_left {
+    width: 100px;
+  }
+  .home_right {
+    flex: 1;
+  }
+  iframe {
+    width: 100%;
+    height: 100%;
+  }
+}
