@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { Layout, Menu, Breadcrumb } from 'antd'
 import {
   DesktopOutlined,
@@ -9,12 +9,23 @@ import {
   AndroidOutlined
 } from '@ant-design/icons'
 import './index.scss'
+import { selectUser } from '../../store/userSlice'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const { Header, Content, Footer, Sider } = Layout
 const { SubMenu } = Menu
 
 export const LeLayout: React.FC = memo(() => {
   const [collapsed, setCollapsed] = useState<boolean>(false)
+  const navigate = useNavigate()
+  const userState = useSelector(selectUser)
+
+  useEffect(() => {
+    if (!userState.token) {
+      navigate('/auth')
+    }
+  }, [userState])
 
   const onCollapse = () => {
     setCollapsed(!collapsed)
