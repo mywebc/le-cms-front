@@ -14,7 +14,7 @@ export const Login: React.FC = memo(() => {
     console.log('data', data)
     if (data.status) {
       message.success('登录成功')
-      navigate('/home')
+      navigate('/dashboard')
     }
   }
 

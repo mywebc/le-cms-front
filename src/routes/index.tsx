@@ -7,16 +7,18 @@ import { Home } from '../pages/home'
 
 const routeList: RouteListType = [
   {
-    path: '/',
-    element: <LeLayout />
-  },
-  {
     path: '/auth',
     element: <Login />
   },
   {
-    path: `/home`,
-    element: <Home />
+    path: '',
+    element: <LeLayout />,
+    children: [
+      {
+        path: '/dashboard',
+        element: <Home />
+      }
+    ]
   }
 ]
 

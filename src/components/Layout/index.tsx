@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useState } from 'react'
-import { Layout, Menu, Breadcrumb } from 'antd'
+import { Layout, Menu, Breadcrumb, message, Button } from 'antd'
 import {
   DesktopOutlined,
   PieChartOutlined,
@@ -12,6 +12,7 @@ import './index.scss'
 import { selectUser } from '../../store/userSlice'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { apiGetLogout, apiUserInfo } from '../../api/auth'
 
 const { Header, Content, Footer, Sider } = Layout
 const { SubMenu } = Menu
@@ -21,14 +22,25 @@ export const LeLayout: React.FC = memo(() => {
   const navigate = useNavigate()
   const userState = useSelector(selectUser)
 
-  useEffect(() => {
-    if (!userState.token) {
-      navigate('/auth')
-    }
-  }, [userState])
-
   const onCollapse = () => {
     setCollapsed(!collapsed)
+  }
+
+  useEffect(() => {
+    ;(async () => {
+      const { data, code, status } = await apiUserInfo()
+      if (status) {
+        message.success('获取用户信息成功')
+      }
+    })()
+  }, [])
+
+  const handleLogout = async () => {
+    const { code, msg } = await apiGetLogout()
+    if (code === 0) {
+      message.success(msg)
+      navigate('/auth')
+    }
   }
 
   return (
@@ -59,7 +71,11 @@ export const LeLayout: React.FC = memo(() => {
         </Menu>
       </Sider>
       <Layout className="site-layout">
-        <Header className="site-layout-background" style={{ padding: 0 }} />
+        <Header className="site-layout-background" style={{ padding: 0 }}>
+          <div>
+            <Button onClick={handleLogout}>退出</Button>
+          </div>
+        </Header>
         <Content style={{ margin: '0 16px' }}>
           <Breadcrumb style={{ margin: '16px 0' }}>
             <Breadcrumb.Item>User</Breadcrumb.Item>

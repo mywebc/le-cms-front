@@ -25,6 +25,10 @@ axios.interceptors.response.use(
     if (res?.data?.code === 0) {
       return Promise.resolve(res.data)
     }
+    // 没权限
+    if (res.data.code === 401) {
+      window.location.href = '/auth'
+    }
 
     // if (String(res?.data?.code) === '9986' || String(res?.data?.code) === '9987') {
     //   localStorage.clear();
@@ -37,34 +41,12 @@ axios.interceptors.response.use(
   },
   error => {
     console.log('error', error)
-    let errorMessage = '系统异常'
-    if (error.response?.status) {
-      // 业务
-      console.log(error.response.status)
-      switch (error.response.status) {
-        case 401: {
-          errorMessage = '未授权'
-          break
-        }
-        case 404: {
-          errorMessage = '资源不存在'
-          break
-        }
-        case 500: {
-          errorMessage = '服务端异常'
-          break
-        }
-        default:
-          break
-      }
-    }
-
-    error.message && $message.error(errorMessage)
+    $message.error(error.data.msg)
     return {
       status: false,
-      msg: errorMessage,
-      data: null,
-      code: '-1'
+      msg: error.data.msg,
+      data: error.data.data,
+      code: error.data?.code
     }
   }
 )
