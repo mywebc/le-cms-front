@@ -28,28 +28,20 @@ export const Login: React.FC = memo(() => {
     <div className="login_wrapper">
       <div className="login_content">
         <Form name="basic" form={form}>
-          <Form.Item
-            label="Username"
-            name="username"
-            rules={[{ required: true, message: 'Please input your username!' }]}
-          >
+          <Form.Item label="账户" name="username" rules={[{ required: true, message: 'Please input your username!' }]}>
             <Input />
           </Form.Item>
 
-          <Form.Item
-            label="Password"
-            name="password"
-            rules={[{ required: true, message: 'Please input your password!' }]}
-          >
+          <Form.Item label="密码" name="password" rules={[{ required: true, message: 'Please input your password!' }]}>
             <Input />
           </Form.Item>
 
           <div className="login_btn">
             <Button type="primary" onClick={handleLogin}>
-              login
+              登录
             </Button>
             <Button type="primary" onClick={handleRegister}>
-              register
+              注册
             </Button>
           </div>
         </Form>

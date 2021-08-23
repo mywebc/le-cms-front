@@ -1,5 +1,6 @@
 import { Button } from 'antd'
 import React, { memo, useState } from 'react'
+import { apiUserInfo } from '../../api/auth'
 import './home.scss'
 
 export const Home = memo(() => {
@@ -16,9 +17,15 @@ export const Home = memo(() => {
     wrapper.requestFullscreen()
   }
 
+  const handleClick = async () => {
+    const aa = await apiUserInfo()
+    console.log('aaaa', aa)
+  }
+
   return (
     <div className="home">
       {!fullScreen && <div className="home_left">左边的缩略图</div>}
+      <Button onClick={handleClick}>test</Button>
 
       <div className="home_right">
         <iframe
