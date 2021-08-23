@@ -29,14 +29,6 @@ axios.interceptors.response.use(
     if (res.data.code === 401) {
       window.location.href = '/auth'
     }
-
-    // if (String(res?.data?.code) === '9986' || String(res?.data?.code) === '9987') {
-    //   localStorage.clear();
-    //   return (window.location.href = new URL('/login', CRM_DOMAIN).href);
-    // }
-
-    // const errorMessage = res.data.message
-    // $message.error(errorMessage)
     return Promise.reject(res)
   },
   error => {
