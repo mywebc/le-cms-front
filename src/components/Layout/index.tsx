@@ -27,12 +27,12 @@ export const LeLayout: React.FC = memo(() => {
   }
 
   useEffect(() => {
-    ;(async () => {
-      const { data, code, status } = await apiUserInfo()
-      if (status) {
-        message.success('获取用户信息成功')
-      }
-    })()
+    // ;(async () => {
+    //   const { data, code, status } = await apiUserInfo()
+    //   if (status) {
+    //     message.success('获取用户信息成功')
+    //   }
+    // })()
   }, [])
 
   const handleLogout = async () => {
@@ -82,7 +82,13 @@ export const LeLayout: React.FC = memo(() => {
             <Breadcrumb.Item>Bill</Breadcrumb.Item>
           </Breadcrumb>
           <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-            Bill is a cat.
+            features:
+            <p>1. 用户认证/权限认证</p>
+            <p>2. 表格导出</p>
+            <p>3. 动态路由</p>
+            <p>4. 图表</p>
+            <p>5. 引导页</p>
+            <p>6. </p>
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
