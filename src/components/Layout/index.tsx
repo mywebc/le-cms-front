@@ -11,10 +11,10 @@ import {
 import './index.scss'
 import { selectUser } from '../../store/userSlice'
 import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 import { apiGetLogout, apiUserInfo } from '../../api/auth'
 import { menuList } from '../../config/menu'
-import { generateMenu } from '../../utils/common'
+import { GenerateMenu } from '../../utils/common'
 
 const { Header, Content, Footer, Sider } = Layout
 const { SubMenu } = Menu
@@ -35,9 +35,6 @@ export const LeLayout: React.FC = memo(() => {
     //     message.success('获取用户信息成功')
     //   }
     // })()
-
-    const aa = generateMenu(menuList)
-    console.log('aaaa', aa)
   }, [])
 
   const handleLogout = async () => {
@@ -55,7 +52,7 @@ export const LeLayout: React.FC = memo(() => {
           <AndroidOutlined />
         </div>
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-          {generateMenu(menuList)}
+          {GenerateMenu(menuList)}
         </Menu>
       </Sider>
       <Layout className="site-layout">
@@ -65,7 +62,8 @@ export const LeLayout: React.FC = memo(() => {
           </div>
         </Header>
         <Content style={{ margin: '0 16px' }}>
-          <Breadcrumb style={{ margin: '16px 0' }}>
+          <Outlet />
+          {/* <Breadcrumb style={{ margin: '16px 0' }}>
             <Breadcrumb.Item>User</Breadcrumb.Item>
             <Breadcrumb.Item>Bill</Breadcrumb.Item>
           </Breadcrumb>
@@ -77,7 +75,7 @@ export const LeLayout: React.FC = memo(() => {
             <p>4. 图表</p>
             <p>5. 引导页</p>
             <p>6. </p>
-          </div>
+          </div> */}
         </Content>
         <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
       </Layout>
