@@ -54,7 +54,9 @@ export const LeLayout: React.FC = memo(() => {
         <div className="logo">
           <AndroidOutlined />
         </div>
-        {generateMenu(menuList)}
+        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+          {generateMenu(menuList)}
+        </Menu>
       </Sider>
       <Layout className="site-layout">
         <Header className="site-layout-background" style={{ padding: 0 }}>

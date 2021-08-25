@@ -10,10 +10,10 @@ import SubMenu from 'antd/lib/menu/SubMenu'
  */
 export const generateMenu = (menuList?: MenuType[]) => {
   return (
-    <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+    <>
       {menuList?.map(_ => {
         let element = null
-        if (_.children) {
+        if (_.children && _.children.length > 0) {
           element = (
             <SubMenu key={_.key} icon={<PieChartOutlined />} title={_.title}>
               {generateMenu(_.children)}
@@ -26,7 +26,8 @@ export const generateMenu = (menuList?: MenuType[]) => {
             </Menu.Item>
           )
         }
+        return element
       })}
-    </Menu>
+    </>
   )
 }
