@@ -61,7 +61,7 @@ export const LeLayout: React.FC = memo(() => {
             <Button onClick={handleLogout}>退出</Button>
           </div>
         </Header>
-        <Content style={{ margin: '0 16px' }}>
+        <Content style={{ margin: '24px 24px' }}>
           <Outlet />
           <Suspense fallback={<div>加载中...</div>} />
         </Content>

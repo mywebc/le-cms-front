@@ -35,5 +35,36 @@ export const menuList: MenuType[] = [
         path: '/dashboard/workplace'
       }
     ]
+  },
+  {
+    name: 'Permissions',
+    title: '权限管理',
+    label: 'Permissions',
+    key: '2',
+    path: '/permissions',
+    theIcon: <PieChartOutlined />,
+    children: [
+      {
+        name: '菜单权限',
+        title: '菜单权限',
+        label: '菜单权限',
+        key: '2-1',
+        path: '/permissions/menu'
+      },
+      {
+        name: '角色权限',
+        title: '角色权限',
+        label: '监角色权限控页',
+        key: '2-2',
+        path: '/permissions/role'
+      },
+      {
+        name: '操作权限',
+        title: '操作权限',
+        label: '操作权限',
+        key: '2-3',
+        path: '/permissions/operation'
+      }
+    ]
   }
 ]

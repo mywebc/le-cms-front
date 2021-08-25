@@ -5,6 +5,7 @@ import { RouteListType } from '../interface/routes'
 import { Login } from '../pages/auth/login'
 import { Analysis } from '../pages/dashboard/analysis'
 import { Monitor } from '../pages/dashboard/monitor'
+import { Workplace } from '../pages/dashboard/workplace'
 import { Home } from '../pages/home'
 
 const routeList: RouteListType = [
@@ -26,7 +27,7 @@ const routeList: RouteListType = [
       },
       {
         path: '/workplace',
-        element: <Monitor />
+        element: <Workplace />
       }
     ]
   }
