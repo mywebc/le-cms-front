@@ -11,7 +11,7 @@ export const menuList: MenuType[] = [
     label: 'Dashboard',
     key: '1',
     path: '/dashboard',
-    theIcon: PieChartOutlined,
+    theIcon: <PieChartOutlined />,
     children: [
       {
         name: '分析页',
@@ -37,5 +37,3 @@ export const menuList: MenuType[] = [
     ]
   }
 ]
-
-

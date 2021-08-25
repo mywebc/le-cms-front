@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo, Suspense, useEffect, useState } from 'react'
 import { Layout, Menu, Breadcrumb, message, Button } from 'antd'
 import {
   DesktopOutlined,
@@ -63,19 +63,7 @@ export const LeLayout: React.FC = memo(() => {
         </Header>
         <Content style={{ margin: '0 16px' }}>
           <Outlet />
-          {/* <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>User</Breadcrumb.Item>
-            <Breadcrumb.Item>Bill</Breadcrumb.Item>
-          </Breadcrumb>
-          <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-            features:
-            <p>1. 用户认证/权限认证</p>
-            <p>2. 表格导出</p>
-            <p>3. 动态路由</p>
-            <p>4. 图表</p>
-            <p>5. 引导页</p>
-            <p>6. </p>
-          </div> */}
+          <Suspense fallback={<div>加载中...</div>} />
         </Content>
         <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
       </Layout>

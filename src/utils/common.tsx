@@ -22,7 +22,7 @@ export const GenerateMenu = (menuList: MenuType[]) => {
         let element = null
         if (_.children && _.children.length > 0) {
           element = (
-            <SubMenu key={_.key} icon={<PieChartOutlined />} title={_.title}>
+            <SubMenu key={_.key} icon={_.theIcon} title={_.title}>
               {GenerateMenu(_.children)}
             </SubMenu>
           )
@@ -30,7 +30,6 @@ export const GenerateMenu = (menuList: MenuType[]) => {
           element = (
             <Menu.Item
               key={_.key}
-              icon={<PieChartOutlined />}
               onClick={() => {
                 handleMenuClick(_.path)
               }}
